@@ -4,7 +4,6 @@ module OrderedUnrolledLinkedList
     describe 'new' do
       it 'creates a new list' do
       list = described_class.new([1,2,3])
-
       end
     end
   end
