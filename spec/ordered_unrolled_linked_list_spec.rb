@@ -6,4 +6,8 @@ RSpec.describe OrderedUnrolledLinkedList do
   it "does something useful" do
     expect(false).to eq(true)
   end
+
+  it "test" do
+    list = OrderedUnrolledLinkedList::List.new
+  end
 end
