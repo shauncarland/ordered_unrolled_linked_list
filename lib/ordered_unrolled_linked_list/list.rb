@@ -45,6 +45,7 @@ module OrderedUnrolledLinkedList
           return i
         else
           i += cur_node.data.length
+          cur_node = cur_node.next
         end
       end
       -1

@@ -110,6 +110,10 @@ module OrderedUnrolledLinkedList
       end
     end
 
+    describe '#delete' do
+
+    end
+
     describe "#index_of" do
       let(:list) do
         described_class.new(
@@ -123,7 +127,7 @@ module OrderedUnrolledLinkedList
         let(:max_node_length) { 4 }
 
         it "returns the correct index" do
-          expect(list.index_of(3)).to eq(2)
+          expect(list.index_of(7)).to eq(6)
         end
 
         describe "and the value is not in the list" do
