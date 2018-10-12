@@ -57,6 +57,25 @@ module OrderedUnrolledLinkedList
       arr
     end
 
+    def inspect
+      cur_node = @head
+      list_inspection = []
+      index = 1
+
+      until cur_node.nil? do
+        inspection = {
+          index: index,
+          data: cur_node.data
+        }
+
+        list_inspection << inspection
+        index += 1
+        cur_node = cur_node.next
+      end
+
+      list_inspection
+    end
+
     private
     def insert_in_node(e, node)
       node.data << e

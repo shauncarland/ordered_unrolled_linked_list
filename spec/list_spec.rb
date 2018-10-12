@@ -1,6 +1,8 @@
 require 'ordered_unrolled_linked_list'
 module OrderedUnrolledLinkedList
   RSpec.describe List do
+    let(:max_node_length) { 5 }
+
     describe '#new' do
       it 'creates a new list' do
         list = described_class.new
@@ -30,8 +32,48 @@ module OrderedUnrolledLinkedList
       end
     end
 
+    describe "#inspect" do
+      let(:list) do
+        described_class.new(
+          { data: [1,2,3],
+            max_node_length: max_node_length
+            }
+          )
+      end
+
+      describe "when there is one node" do
+        let(:max_node_length) { 3 }
+        it "returns the inspection for the one node" do
+          list_inspection = [
+            {
+              index: 1,
+              data: [1,2,3]
+            }
+          ]
+          expect(list.inspect).to eq(list_inspection)
+        end
+      end
+
+      describe "when there are multiple nodes" do
+        let(:max_node_length) { 2 }
+
+        it "returns the inspections for all of the nodes" do
+          list_inspection = [
+            {
+              index: 1,
+              data: [1,2]
+            },
+            {
+              index: 2,
+              data: [3]
+            },
+          ]
+          expect(list.inspect).to eq(list_inspection)
+        end
+      end
+    end
+
     describe '#add' do
-      let(:max_node_length) { 5 }
       let(:list) { described_class.new({ max_node_length: max_node_length }) }
       describe 'adding to an empty list' do
         it 'adds the item to the head node' do
