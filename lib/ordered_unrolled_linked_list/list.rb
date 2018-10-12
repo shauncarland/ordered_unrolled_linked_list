@@ -23,7 +23,7 @@ module OrderedUnrolledLinkedList
 
       cur_node = @head
 
-      while !cur_node.next.nil? do
+      until cur_node.next.nil? do
         if e < cur_node.max
           insert_in_node(e, cur_node)
           return
@@ -31,8 +31,19 @@ module OrderedUnrolledLinkedList
           cur_node = cur_node.next
         end
       end
-      
+
       insert_in_node(e, cur_node)
+    end
+
+    def to_s
+      cur_node = @head
+      str = ""
+
+      until cur_node.nil? do
+        cur_node.data.each { |a| str += "#{a} " }
+        cur_node = cur_node.next
+      end
+      str.strip
     end
 
     private

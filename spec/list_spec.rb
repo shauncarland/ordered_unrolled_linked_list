@@ -15,6 +15,13 @@ module OrderedUnrolledLinkedList
       end
     end
 
+    describe "#to_s" do
+      let(:list) { described_class.new({ data: [1,2,3,4] })}
+      it 'prints the list' do
+        expect(list.to_s).to eq("1 2 3 4")
+      end
+    end
+
     describe '#add' do
       let(:max_node_length) { 5 }
       let(:list) { described_class.new({ max_node_length: max_node_length }) }
