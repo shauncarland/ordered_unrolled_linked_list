@@ -7,12 +7,12 @@ module OrderedUnrolledLinkedList
         expect(list.max_node_length).to eq(5)
       end
 
-      # describe 'with data' do
-      #   it 'creates a head node with the data' do
-      #     list = described_class.new({ data: [1,2,3] })
-      #     expect(list.head.data).to eq([1,2,3])
-      #   end
-      # end
+      describe 'with data' do
+        it 'creates a head node with the data' do
+          list = described_class.new({ data: [1,2,3] })
+          expect(list.head.data).to eq([1,2,3])
+        end
+      end
     end
 
     describe '#add' do
@@ -44,20 +44,13 @@ module OrderedUnrolledLinkedList
             describe 'and an element is added to the list' do
               it 'creates a new node' do
                 list.add(1)
+                expect(list.head.data).to eq([1,1,1,1,1])
                 expect(list.head.next.data).to eq([1])
               end
             end
           end
         end
       end
-      # describe 'when adding to an unfilled head node' do
-      #   let(:list) { described.class.new([1,2,4]) }
-      #
-      #   it 'adds an item to the head node in the correct order' do
-      #     list.add(3)
-      #     expect(list.head.data).to eq([1,2,3,4])
-      #   end
-      # end
     end
   end
 end
