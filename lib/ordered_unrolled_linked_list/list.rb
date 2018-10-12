@@ -40,10 +40,21 @@ module OrderedUnrolledLinkedList
       str = ""
 
       until cur_node.nil? do
-        cur_node.data.each { |a| str += "#{a} " }
+        cur_node.data.each { |e| str += "#{e} " }
         cur_node = cur_node.next
       end
       str.strip
+    end
+
+    def to_a
+      arr = []
+      cur_node = @head
+
+      until cur_node.nil? do
+        cur_node.data.each { |e| arr << e }
+        cur_node = cur_node.next
+      end
+      arr
     end
 
     private
