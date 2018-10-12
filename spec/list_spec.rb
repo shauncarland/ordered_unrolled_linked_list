@@ -16,17 +16,37 @@ module OrderedUnrolledLinkedList
     end
 
     describe '#add' do
-      let(:list) { described_class.new }
+      let(:max_node_length) { 5 }
+      let(:list) { described_class.new({ max_node_length: max_node_length }) }
       describe 'adding to an empty list' do
         it 'adds the item to the head node' do
           list.add(1)
           expect(list.head.data).to eq([1])
         end
+      end
 
-        describe 'adding beyond the head nodes capacity' do
-          it 'creates a new node' do
-            6.times { list.add(1) }
-            expect(list.head.next.data).to eq([1])
+      describe 'adding to a non-empty list' do
+        context 'when there is one node in the list' do
+          context 'and the node is not at full capacity' do
+            before(:each) { [1,2,4].each { |e| list.add(e) } }
+
+            describe 'and an element is added to the list' do
+              it 'puts the element in the correct order' do
+                list.add(3)
+                expect(list.head.data).to eq([1,2,3,4])
+              end
+            end
+          end
+
+          context 'and the node is at full capacity' do
+            before(:each) { max_node_length.times { list.add(1) } }
+
+            describe 'and an element is added to the list' do
+              it 'creates a new node' do
+                list.add(1)
+                expect(list.head.next.data).to eq([1])
+              end
+            end
           end
         end
       end

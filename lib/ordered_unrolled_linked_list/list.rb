@@ -23,14 +23,15 @@ module OrderedUnrolledLinkedList
 
       cur_node = @head
 
-      while !cur_node.nil? do
-        if cur_node.data.min >= e && cur_node.data.max <= e
+      while !cur_node.next.nil? do
+        if e < cur_node.max
           insert_in_node(e, cur_node)
           return
         else
           cur_node = cur_node.next
         end
       end
+      insert_in_node(e, cur_node)
     end
 
     def insert_in_node(e, node)
@@ -40,8 +41,6 @@ module OrderedUnrolledLinkedList
       if node.data.length > @max_node_length
         next_node = node.next
 
-        # node -> next_node
-        # node -> new_node -> next_node
         new_node = Node.new({ data: [node.data.pop] })
 
         node.next = new_node
