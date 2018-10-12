@@ -35,6 +35,20 @@ module OrderedUnrolledLinkedList
       insert_in_node(e, cur_node)
     end
 
+    def delete(e)
+      cur_node = @head
+
+      until cur_node.nil? do
+        cur_node = cur_node.next
+        if e < cur_node.max
+          cur_node.data.delete(e)
+          return
+        else
+          cur_node = cur_node.next
+        end
+      end
+    end
+
     def index_of(e)
       cur_node = @head
       i = 0

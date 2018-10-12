@@ -111,7 +111,18 @@ module OrderedUnrolledLinkedList
     end
 
     describe '#delete' do
+      let(:list) do
+        described_class.new(
+          { data: [1,2,3,4,5,6,7,8],
+            max_node_length: 3
+            }
+          )
+      end
 
+      it "deletes a node" do
+        list.delete(4)
+        expect(list.to_a).to eq([1,2,3,5,6,7,8])
+      end
     end
 
     describe "#index_of" do
