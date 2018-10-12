@@ -109,5 +109,37 @@ module OrderedUnrolledLinkedList
         end
       end
     end
+
+    describe "#index_of" do
+      let(:list) do
+        described_class.new(
+          { data: [1,2,3,4,5,6,7,8],
+            max_node_length: max_node_length
+            }
+          )
+      end
+
+      describe "when the list has one node" do
+        let(:max_node_length) { 4 }
+
+        it "returns the correct index" do
+          expect(list.index_of(3)).to eq(2)
+        end
+
+        describe "and the value is not in the list" do
+          it "returns -1" do
+            expect(list.index_of(9)).to eq(-1)
+          end
+        end
+      end
+
+      describe "when the list has multiple nodes" do
+        let(:max_node_length) { 2 }
+      end
+
+      it "returns the correct index" do
+        expect(list.index_of(3)).to eq(2)
+      end
+    end
   end
 end

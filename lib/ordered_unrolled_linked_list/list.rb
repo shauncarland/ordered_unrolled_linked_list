@@ -35,6 +35,21 @@ module OrderedUnrolledLinkedList
       insert_in_node(e, cur_node)
     end
 
+    def index_of(e)
+      cur_node = @head
+      i = 0
+
+      until cur_node.nil? do
+        if e < cur_node.max
+          i += cur_node.data.index(e)
+          return i
+        else
+          i += cur_node.data.length
+        end
+      end
+      -1
+    end
+
     def to_s
       cur_node = @head
       str = ""
